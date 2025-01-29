@@ -15,10 +15,9 @@ return new class extends Migration
             $table->id();
             $table->string('name');
             $table->string('slug')->unique();
-
-            $table->unsignedBigInteger('category_id');
-            $table->unsignedBigInteger('subcategory_id');
-            $table->unsignedBigInteger('brand_id');
+            $table->foreignId('category_id')->constrained()->onDelete('cascade');
+            $table->foreignId('subcategory_id')->constrained()->onDelete('cascade');
+            $table->foreignId('brand_id')->nullable()->constrained()->onDelete('cascade');
 
             $table->text('description')->nullable();
             $table->decimal('price', 10, 2);
@@ -32,11 +31,6 @@ return new class extends Migration
             $table->enum('status', ['active', 'inactive'])->default('active');
             $table->softDeletes();
             $table->timestamps();
-
-            $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
-            $table->foreign('subcategory_id')->references('id')->on('subcategories')->onDelete('cascade');
-            $table->foreign('brand_id')->references('id')->on('brands')->onDelete('cascade');
-            $table->timestamps();
         });
     }
 
@@ -48,3 +42,4 @@ return new class extends Migration
         Schema::dropIfExists('products');
     }
 };
+

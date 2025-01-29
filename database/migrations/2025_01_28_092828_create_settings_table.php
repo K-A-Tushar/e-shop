@@ -19,11 +19,13 @@ return new class extends Migration
             $table->longText('keywords')->nullable();
             $table->string('author')->nullable();
             $table->string('phone')->nullable();
+            $table->string('fax')->nullable();
             $table->string('email')->nullable();
             $table->string('address')->nullable();
             $table->string('copyright')->nullable();
             $table->string('logo')->nullable();
             $table->string('favicon')->nullable();
+            $table->json('url')->nullable();//['facebook', 'instagram', 'linkedin', 'youtube']
             $table->timestamps();
         });
     }

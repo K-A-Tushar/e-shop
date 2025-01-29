@@ -20,10 +20,10 @@ Route::middleware('auth')->group(function () {
 /**
  * Route for development users
  */
-require __DIR__.'/maria.php';
-require __DIR__.'/nur.php';
-require __DIR__.'/boniamin.php';
-require __DIR__.'/tushar.php';
+require __DIR__.'/persion/maria.php';
+require __DIR__.'/persion/nur.php';
+require __DIR__.'/persion/boniamin.php';
+require __DIR__.'/persion/tushar.php';
 
 /**Routes for production */
 // require __DIR__.'/users.php';
